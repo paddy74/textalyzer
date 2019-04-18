@@ -38,7 +38,7 @@ endif()
 # Set the library sources
 # -----------------------
 set(libsrc
-    src/StopwordFilter.cpp
+    src/WordFilter.cpp
     src/Analyzer.cpp
 )
 
@@ -65,6 +65,21 @@ target_include_directories(${PROJECT_NAME_L}
 )
 
 target_compile_features(${PROJECT_NAME_L} PRIVATE cxx_auto_type)
+
+# Include external libs
+# ---------------------
+#target_include_directories(${PROJECT_NAME_L}
+#    PRIVATE
+#        ${CMAKE_CURRENT_SOURCE_DIR}/libs/tongrams
+#)
+
+#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/libs/tongrams)
+
+# Link
+#target_link_libraries(${PROJECT_NAME_L}
+#    TONGRAMS
+#)
+
 
 # -----------------------------------------------------------------------------
 # Installation instructions
@@ -147,4 +162,5 @@ export(PACKAGE ${PROJECT_NAME})
 
 message(STATUS "Exporting project - done")
 
+# Testing
 add_subdirectory(tests)

@@ -13,7 +13,7 @@ namespace textalyzer
  * @brief Handle stopword removal
  *
  */
-class StopwordFilter
+class WordFilter
 {
 public:
     /* Public member methods */
@@ -35,7 +35,7 @@ public:
         std::string const & language);
 
 private:
-    StopwordFilter() {}
+    WordFilter() {}
 
 
     /* Private class methods */

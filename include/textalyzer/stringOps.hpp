@@ -158,7 +158,7 @@ void rmNonAlNumInplace(std::string & str)
  * @return false Character is alphnumeric or whitespace.
  */
 bool isNotAlNumSpace(char const & c)
-{ return !(std::isalnum(c) || std::isspace(c)); }
+{ return !(std::isalnum(c) || std::isspace(c); }
 
 
 /**
@@ -183,6 +183,22 @@ std::string rmNonAlNumSpaceCopy(std::string const & str)
     std::string outStr = str;
     rmNonAlNumSpaceInplace(outStr);
     return outStr;
+}
+
+
+std::string rmNonAlphaSpace(std::string & str)
+{
+    auto static isNotAlphaSpace = [](char const & c)
+    { return !(std::isspace(c) || std::isalpha(c)); };
+
+    str.erase(
+        std::remove_if(
+            str.begin(),
+            str.end(),
+            isNotAlphaSpace
+        ),
+        str.end()
+    );
 }
 
 }
