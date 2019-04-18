@@ -68,18 +68,17 @@ target_compile_features(${PROJECT_NAME_L} PRIVATE cxx_auto_type)
 
 # Include external libs
 # ---------------------
-#target_include_directories(${PROJECT_NAME_L}
-#    PRIVATE
-#        ${CMAKE_CURRENT_SOURCE_DIR}/libs/tongrams
-#)
+target_include_directories(${PROJECT_NAME_L}
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/libs/OleanderStemmingLibrary
+)
 
-#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/libs/tongrams)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/libs/OleanderStemmingLibrary)
 
 # Link
-#target_link_libraries(${PROJECT_NAME_L}
-#    TONGRAMS
-#)
-
+target_link_libraries(${PROJECT_NAME_L}
+    oleanderstemminglibrary
+)
 
 # -----------------------------------------------------------------------------
 # Installation instructions
