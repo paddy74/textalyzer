@@ -2,6 +2,7 @@
 
 #include <textalyzer/stringOps.hpp>
 #include <textalyzer/WordFilter.hpp>
+#include <textalyzer/ngramify.hpp>
 
 #include <olestem/stemming/english_stem.h>
 
@@ -56,6 +57,18 @@ std::pair<std::vector<std::string>, std::size_t> Analyzer::simpleAnalyze(
     }
 
     return std::pair(tokenVect, numWords);
+}
+
+
+std::pair<std::vector<std::string>, std::size_t> Analyzer::fullAnalyze(
+    std::string const & inputText,
+    uint8_t const & ngrams
+)
+{
+    // TODO: implement in full
+    auto pair = simpleAnalyze(inputText);
+    pair.first = ngramify(pair.first, 2);
+    return pair;
 }
 
 
