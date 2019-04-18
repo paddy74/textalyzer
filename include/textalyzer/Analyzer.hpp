@@ -31,11 +31,13 @@ public:
     /**
      * @brief Creates an `unordered_map` of token frequencies.
      *
+     * @tparam T
      * @param tokenVector
-     * @return std::unordered_map<std::string, uint>
+     * @return std::unordered_map<T, uint>
      */
-    std::unordered_map<std::string, uint> static tokenVectToMap(
-        std::vector<std::string> tokenVector
+    template<typename T>
+    std::unordered_map<T, std::size_t> static toFrequencyMap(
+        std::vector<T> tokenVector
     );
 
 private:

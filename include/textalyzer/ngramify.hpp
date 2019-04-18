@@ -7,6 +7,13 @@
 namespace textalyzer
 {
 
+/**
+ * @brief Construct ngrams for the given ordered token vector.
+ *
+ * @param tokenVect Ordered token vector from which to construct ngrams.
+ * @param n Size of max ngram. All lesser ngrams are also collected.
+ * @return std::vector<std::string>
+ */
 std::vector<std::string> ngramify(
     std::vector<std::string> const & tokenVect,
     uint const & n
@@ -43,6 +50,12 @@ std::vector<std::string> ngramify(
 }
 
 
+/**
+ * @brief Construct ngrams for the given ordered token vector inplace.
+ *
+ * @param tokenVect Ordered token vector from which to construct ngrams.
+ * @param n Size of max ngram. All lesser ngrams are also collected.
+ */
 void ngramifyInplace(
     std::vector<std::string> & tokenVect,
     uint const & n
