@@ -155,7 +155,7 @@ std::string rmNonAlNumSpaceCopy(std::string const & str)
  * @param str
  * @return std::string
  */
-std::string rmNonAlphaSpace(std::string & str)
+void rmNonAlphaSpace(std::string & str)
 {
     auto static isNotAlphaSpace = [](char const & c)
     { return !(std::isspace(c) || std::isalpha(c)); };

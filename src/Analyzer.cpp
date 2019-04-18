@@ -3,6 +3,10 @@
 #include <textalyzer/stringOps.hpp>
 #include <textalyzer/WordFilter.hpp>
 
+#include <olestem/stemming/english_stem.h>
+
+#include <codecvt>
+
 
 namespace textalyzer
 {
@@ -11,7 +15,7 @@ namespace textalyzer
 /**
  * @brief Analyze a string of input text by calling a chain of methods:
  *  1. Case fold to lower case
- *  2. Remove numbers
+ *  2. Expand concatenations
  *  3. Remove other non-alphabetic characters
  *  4. Tokenize words
  *  5. Remove stop words
@@ -26,7 +30,9 @@ std::pair<std::vector<std::string>, std::size_t> Analyzer::simpleAnalyze(
     // 1. Case fold to lower case
     std::string outText = toLowerCopy(inputText);
 
-    // 2, 3.
+    // TODO: 2. Expand concatenations
+
+    // 3.
     rmNonAlphaSpace(outText);
 
     // 4. Tokenize words
@@ -37,7 +43,17 @@ std::pair<std::vector<std::string>, std::size_t> Analyzer::simpleAnalyze(
     // 5. Remove stop words
     WordFilter::removeWords(tokenVect);
 
-    // TODO: 6. Reduce words to their base form with stemming
+    // 6. Reduce words to their base form with stemming
+    {
+        stemming::english_stem<> EnglishStemmer;
+        std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+        for (auto & token : tokenVect)
+        {
+            std::wstring wtoken = converter.from_bytes(token);
+            EnglishStemmer(wtoken);
+            token = converter.to_bytes(wtoken);
+        }
+    }
 
     return std::pair(tokenVect, numWords);
 }
