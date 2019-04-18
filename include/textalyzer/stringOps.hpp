@@ -122,52 +122,15 @@ std::string toUpperCopy(std::string const & str)
 
 
 /**
- * @brief Identifies if a character is not alphnumeric.
- *
- * @param c
- * @return true Character is not alphanumeric.
- * @return false Character is alphanumeric.
- */
-bool isNotAlNum(char const & c)
-{ return !std::isalnum(c); }
-
-
-/**
- * @brief Remove all non-alphanumeric characters from a string.
- *
- * @param str
- */
-void rmNonAlNumInplace(std::string & str)
-{
-    str.erase(
-        std::remove_if(
-            str.begin(),
-            str.end(),
-            isNotAlNum
-        ),
-        str.end()
-    );
-}
-
-
-/**
- * @brief Identifies if a character is not alphanumeric or whitespace.
- *
- * @param c
- * @return true Character is not alphanumeric or whitespace.
- * @return false Character is alphnumeric or whitespace.
- */
-bool isNotAlNumSpace(char const & c)
-{ return !(std::isalnum(c) || std::isspace(c); }
-
-
-/**
  * @brief Remove all non-alphanumeric non-whitespace characters from a string.
  *
  * @param str
  */
 void rmNonAlNumSpaceInplace(std::string & str)
 {
+    auto static isNotAlNumSpace = [](char const & c)
+    { return !(std::isspace(c) || std::isalnum(c)); };
+
     str.erase(
         std::remove_if(
             str.begin(),
@@ -186,6 +149,12 @@ std::string rmNonAlNumSpaceCopy(std::string const & str)
 }
 
 
+/**
+ * @brief Remove all non-alphabetic non-whitespace characters from a string.
+ *
+ * @param str
+ * @return std::string
+ */
 std::string rmNonAlphaSpace(std::string & str)
 {
     auto static isNotAlphaSpace = [](char const & c)
