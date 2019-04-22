@@ -36,8 +36,8 @@ public:
      * @return std::unordered_map<T, uint>
      */
     template<typename T>
-    std::unordered_map<T, std::size_t> static toFrequencyMap(
-        std::vector<T> tokenVector
+    std::unordered_map<T, std::size_t> static asFrequencyMap(
+        std::vector<T> const & tokenVector
     );
 
 private:

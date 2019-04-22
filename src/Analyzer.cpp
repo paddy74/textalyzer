@@ -70,8 +70,8 @@ std::pair<std::vector<std::string>, std::size_t> Analyzer::fullAnalyze(
 
 
 template<typename T>
-std::unordered_map<T, std::size_t> Analyzer::toFrequencyMap(
-    std::vector<T> tokenVector)
+std::unordered_map<T, std::size_t> Analyzer::asFrequencyMap(
+    std::vector<T> const & tokenVector)
 {
     std::unordered_map<T, std::size_t> freqMap;
     for (auto const & token : tokenVector)
