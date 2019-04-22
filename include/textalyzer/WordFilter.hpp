@@ -2,7 +2,6 @@
 
 #include <vector>
 #include <unordered_set>
-#include <algorithm>
 
 
 namespace textalyzer
@@ -18,12 +17,12 @@ public:
     /* Public member methods */
 
     void static removeWords(
-        std::vector<std::string> & strVect,
+        std::vector<std::string> & wordVect,
         std::unordered_set<std::string> const & stopwordSet);
     void static removeWords(
-        std::vector<std::string> & strVect,
+        std::vector<std::string> & wordVect,
         std::string const & language);
-    void static removeWords(std::vector<std::string> & strVect);
+    void static removeWords(std::vector<std::string> & wordVect);
 
 
     /* Public getters */

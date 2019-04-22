@@ -12,32 +12,32 @@ namespace textalyzer
 /**
  * @brief Remove all stop words found in the given `stopwordSet`
  *
- * @param strVect
+ * @param wordVect
  * @param stopwordSet
  */
 void WordFilter::removeWords(
-    std::vector<std::string> & strVect,
+    std::vector<std::string> & wordVect,
     std::unordered_set<std::string> const & stopwordSet
 )
-{ strVect = WordFilter::getSymDiff(strVect, stopwordSet); }
+{ wordVect = WordFilter::getSymDiff(wordVect, stopwordSet); }
 
 /**
  * @brief Remove all stop words of the given language.
  *
- * @param strVect
+ * @param wordVect
  * @param language
  */
 void WordFilter::removeWords(
-    std::vector<std::string> & strVect, std::string const & language)
-{ WordFilter::removeWords(strVect, WordFilter::getStopwords(language)); }
+    std::vector<std::string> & wordVect, std::string const & language)
+{ WordFilter::removeWords(wordVect, WordFilter::getStopwords(language)); }
 
 /**
  * @brief Remove all stop words of the default language ("english").
  *
- * @param strVect
+ * @param wordVect
  */
-void WordFilter::removeWords(std::vector<std::string> & strVect)
-{ WordFilter::removeWords(strVect, WordFilter::DEFAULT_LANGUAGE); }
+void WordFilter::removeWords(std::vector<std::string> & wordVect)
+{ WordFilter::removeWords(wordVect, WordFilter::DEFAULT_LANGUAGE); }
 
 
 /* Getters */
