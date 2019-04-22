@@ -2,11 +2,15 @@
 
 # Textalyzer
 
+This is a C++ library to conduct multiple text analysis and preprocessing techniques.
+
 ## Getting started
+
+Please read (FEATURES.md)[FEATURES.md] for details on how to utilize this library.
 
 ### Adding to your project
 
-The recommended way to add this library to you project is by including the following to your CMakeLists.txt:
+The recommended/intended way to add this library to you project is by including the following to your CMakeLists.txt:
 
 ```cmake
 cmake_minimum_required(VERSION 3.13)
