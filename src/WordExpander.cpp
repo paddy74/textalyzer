@@ -203,8 +203,8 @@ std::unordered_map<std::string, std::string>
     { "y'all've", "you all have" },
     { "you'd", "you had" },
     { "you'd've", "you would have" },
-    { "you'll", "you you will" },
-    { "you'll've", "you you will have" },
+    { "you'll", "you will" },
+    { "you'll've", "you will have" },
     { "you're", "you are" },
     { "you've", "you have" }
 };
