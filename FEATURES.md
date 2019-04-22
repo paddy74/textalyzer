@@ -4,7 +4,8 @@
 The following individual features are made available by this library:
 
 - Case fold
-- *(TODO)* Compound word expansion
+- *(TODO)* Compound word breaking
+- *(TODO)* Expand word contractions
 - Remove non-alphabetic characters
 - Remove non-alphanumeric characters
 - Split words at a delimiter
@@ -29,7 +30,7 @@ std::pair<std::vector<std::string>, std::size_t> simplePair =
 ```
 
 - Case fold to lower case
-- *(TODO)* Compound word expansion
+- *(TODO)* Expand word contractions
 - Remove non-alphabetic characters
 - Capture the number of words
 - Remove stop words

@@ -16,7 +16,7 @@ namespace textalyzer
 /**
  * @brief Analyze a string of input text by calling a chain of methods:
  *  1. Case fold to lower case
- *  2. Expand concatenations
+ *  2. Expand word contractions
  *  3. Remove other non-alphabetic characters
  *  4. Tokenize words
  *  5. Remove stop words
@@ -31,7 +31,7 @@ std::pair<std::vector<std::string>, std::size_t> Analyzer::simpleAnalyze(
     // 1. Case fold to lower case
     std::string outText = toLowerCopy(inputText);
 
-    // TODO: 2. Expand concatenations
+    // TODO: 2. Expand word contractions
 
     // 3.
     rmNonAlphaSpace(outText);
@@ -45,7 +45,7 @@ std::pair<std::vector<std::string>, std::size_t> Analyzer::simpleAnalyze(
     WordFilter::removeWords(tokenVect);
 
     // 6. Reduce words to their base form with stemming
-    {
+    {  // TODO: either abstract the stemmer in olestem our write func
         stemming::english_stem<> EnglishStemmer;
         std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
         for (auto & token : tokenVect)

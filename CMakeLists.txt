@@ -18,6 +18,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_COLOR_MAKEFILE ON)
 
+# Build settings
+# --------------
 include_directories("${CMAKE_SOURCE_DIR}")
 set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/build)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
@@ -39,6 +41,7 @@ endif()
 # -----------------------
 set(libsrc
     src/WordFilter.cpp
+    src/WordExpander.cpp
     src/Analyzer.cpp
 )
 
