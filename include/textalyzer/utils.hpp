@@ -4,6 +4,9 @@
 #include <unordered_map>
 
 
+namespace textalyzer
+{
+
 /**
  * @brief Creates an `unordered_map` of token frequencies.
  *
@@ -26,4 +29,6 @@ std::unordered_map<T, std::size_t> static asFrequencyMap(
     }
 
     return freqMap;
+}
+
 }
