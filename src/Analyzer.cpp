@@ -16,11 +16,10 @@ namespace textalyzer
 /**
  * @brief Analyze a string of input text by calling a chain of methods:
  *  1. Case fold to lower case
- *  2. Expand word contractions
- *  3. Remove other non-alphabetic characters
- *  4. Tokenize words
- *  5. Remove stop words
- *  6. Reduce words to their base form with stemming
+ *  2. Remove non-alphabetic non-space characters
+ *  3. Tokenize words
+ *  4. Remove stop words
+ *  5. Reduce words to their base form with stemming
  *
  * @param inputText
  * @return std::pair<std::vector<std::string>, uint>
@@ -31,20 +30,18 @@ std::pair<std::vector<std::string>, std::size_t> Analyzer::simpleAnalyze(
     // 1. Case fold to lower case
     std::string outText = toLowerCopy(inputText);
 
-    // TODO: 2. Expand word contractions
-
-    // 3.
+    // 2. Remove non-alphabetic non-space characters
     rmNonAlphaSpace(outText);
 
-    // 4. Tokenize words
+    // 3. Tokenize words
     std::vector<std::string> tokenVect = strSplit(outText);
     // Capture number of words
     std::size_t const numWords = tokenVect.size();
 
-    // 5. Remove stop words
+    // 4. Remove stop words
     WordFilter::removeWords(tokenVect);
 
-    // 6. Reduce words to their base form with stemming
+    // 5. Reduce words to their base form with stemming
     {  // TODO: either abstract the stemmer in olestem our write func
         stemming::english_stem<> EnglishStemmer;
         std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;

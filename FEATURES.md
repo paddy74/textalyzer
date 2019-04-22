@@ -30,7 +30,6 @@ std::pair<std::vector<std::string>, std::size_t> simplePair =
 ```
 
 - Case fold to lower case
-- *(TODO)* Expand word contractions
 - Remove non-alphabetic characters
 - Capture the number of words
 - Remove stop words
