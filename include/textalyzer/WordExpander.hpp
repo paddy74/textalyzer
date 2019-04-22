@@ -1,12 +1,16 @@
 #pragma once
 
 #include <vector>
-#include <unordered_set>
+#include <unordered_map>
 
 
 namespace textalyzer
 {
 
+/**
+ * @brief Expand word contractions such as: 'you're' -> 'you are'.
+ *
+ */
 class WordExpander
 {
 public:
@@ -16,11 +20,13 @@ public:
         std::vector<std::string> & wordVect, std::string const & language);
     void static expandWords(std::vector<std::string> & wordVect);
 
+    void static expandWord(std::string & word, std::string const & language);
+    void static expandWord(std::string & word);
 
     /* Public getters */
 
-    std::unordered_set<std::string> static const & getContractions(
-        std::string const & language);
+    std::unordered_map<std::string, std::string>
+        static const & getContractions(std::string const & language);
 
 private:
     WordExpander() {}
@@ -30,7 +36,8 @@ private:
 
     std::string static const DEFAULT_LANGUAGE;
 
-    std::unordered_set<std::string> static const englishContractions;
+    std::unordered_map<std::string, std::string>
+        static const englishContractions;
 };
 
 }
