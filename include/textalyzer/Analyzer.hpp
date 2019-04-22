@@ -27,19 +27,6 @@ public:
         std::string const & inputText
     ) { return fullAnalyze(inputText, Analyzer::DEFAULT_GRAMS); }
 
-
-    /**
-     * @brief Creates an `unordered_map` of token frequencies.
-     *
-     * @tparam T
-     * @param tokenVector
-     * @return std::unordered_map<T, uint>
-     */
-    template<typename T>
-    std::unordered_map<T, std::size_t> static asFrequencyMap(
-        std::vector<T> const & tokenVector
-    );
-
 private:
     Analyzer() {}
 

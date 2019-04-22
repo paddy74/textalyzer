@@ -68,21 +68,4 @@ std::pair<std::vector<std::string>, std::size_t> Analyzer::fullAnalyze(
     return pair;
 }
 
-
-template<typename T>
-std::unordered_map<T, std::size_t> Analyzer::asFrequencyMap(
-    std::vector<T> const & tokenVector)
-{
-    std::unordered_map<T, std::size_t> freqMap;
-    for (auto const & token : tokenVector)
-    {
-        if (freqMap.count(token) == 0)
-            freqMap[token] = 1;
-        else
-            freqMap.at(token)++;
-    }
-
-    return freqMap;
-}
-
 }
