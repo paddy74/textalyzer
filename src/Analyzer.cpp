@@ -1,6 +1,8 @@
 #include <textalyzer/Analyzer.hpp>
 
-#include <textalyzer/stringOps.hpp>
+#include <textalyzer/caseFold.hpp>
+#include <textalyzer/editCharacter.hpp>
+#include <textalyzer/tokenize.hpp>
 #include <textalyzer/WordFilter.hpp>
 #include <textalyzer/ngramify.hpp>
 
@@ -28,13 +30,13 @@ std::pair<std::vector<std::string>, std::size_t> Analyzer::simpleAnalyze(
     std::string const & inputText)
 {
     // 1. Case fold to lower case
-    std::string outText = toLowerCopy(inputText);
+    std::string outText = asLower(inputText);
 
     // 2. Remove non-alphabetic non-space characters
-    rmNonAlphaSpace(outText);
+    removeNotAlpha(outText);
 
     // 3. Tokenize words
-    std::vector<std::string> tokenVect = strSplit(outText);
+    std::vector<std::string> tokenVect = tokenizeByWord(outText);
     // Capture number of words
     std::size_t const numWords = tokenVect.size();
 

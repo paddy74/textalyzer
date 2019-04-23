@@ -15,7 +15,7 @@ namespace textalyzer
  * @return std::unordered_map<T, uint>
  */
 template<typename T>
-std::unordered_map<T, std::size_t> static asFrequencyMap(
+std::unordered_map<T, std::size_t> toFrequencyMap(
     std::vector<T> const & tokenVector
 )
 {
