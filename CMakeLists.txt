@@ -80,7 +80,8 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/libs/OleanderStemmingLibrary)
 
 # Link
 target_link_libraries(${PROJECT_NAME_L}
-    oleanderstemminglibrary
+    PRIVATE
+        oleanderstemminglibrary
 )
 
 # -----------------------------------------------------------------------------
