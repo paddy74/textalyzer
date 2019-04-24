@@ -1,4 +1,4 @@
-#include <textalyzer/Analyzer.hpp>
+#include <textalyzer/textalyzer.hpp>
 
 #include <textalyzer/caseFold.hpp>
 #include <textalyzer/editCharacter.hpp>
@@ -14,20 +14,8 @@
 namespace textalyzer
 {
 
-/* Public class methods */
-/**
- * @brief Analyze a string of input text by calling a chain of methods:
- *  1. Case fold to lower case
- *  2. Remove non-alphabetic non-space characters
- *  3. Tokenize words
- *  4. Remove stop words
- *  5. Reduce words to their base form with stemming
- *
- * @param inputText
- * @return std::pair<std::vector<std::string>, uint>
- */
-std::pair<std::vector<std::string>, std::size_t> Analyzer::simpleAnalyze(
-    std::string const & inputText)
+std::pair<std::vector<std::string>, std::size_t> simpleAnalyze(
+    std::string const & inputText, uint8_t const & ngrams)
 {
     // 1. Case fold to lower case
     std::string outText = asLower(inputText);
@@ -55,14 +43,15 @@ std::pair<std::vector<std::string>, std::size_t> Analyzer::simpleAnalyze(
         }
     }
 
+    // 6. Construct n-grams
+    ngramifyInplace(tokenVect, ngrams);
+
     return std::pair(tokenVect, numWords);
 }
 
 
-std::pair<std::vector<std::string>, std::size_t> Analyzer::fullAnalyze(
-    std::string const & inputText,
-    uint8_t const & ngrams
-)
+std::pair<std::vector<std::string>, std::size_t> fullAnalyze(
+    std::string const & inputText, uint8_t const & ngrams)
 {
     // TODO: implement in full
     auto pair = simpleAnalyze(inputText);

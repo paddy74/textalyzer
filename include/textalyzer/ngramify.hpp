@@ -8,10 +8,10 @@ namespace textalyzer
 {
 
 /**
- * @brief Construct ngrams for the given ordered token vector.
+ * @brief Construct n-grams for the given ordered token vector.
  *
  * @param tokenVect Ordered token vector from which to construct ngrams.
- * @param n Size of max ngram. All lesser ngrams are also collected.
+ * @param n Size of max n-gram. All lesser n-grams are also collected.
  * @return std::vector<std::string>
  */
 std::vector<std::string> ngramify(
@@ -19,6 +19,8 @@ std::vector<std::string> ngramify(
     uint const & n
 )
 {
+    if (n == 1) return tokenVect;
+
     // TODO: infinite grams (recursive)
     std::vector<std::string> ngramVect;
     for (
