@@ -12,7 +12,8 @@ template<typename T>
 using AnlyzerRetType = std::pair<std::vector<T>, std::size_t>;
 
 template<typename A>
-using AnlyzerFunType = std::function<AnlyzerRetType<A>(std::string, uint8_t)>;
+using AnlyzerFunType = std::function<AnlyzerRetType<A>(
+    std::string const &, uint8_t const &)>;
 
 
 class Analyzer
