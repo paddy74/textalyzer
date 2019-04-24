@@ -22,7 +22,7 @@ std::vector<std::string> ngramify(
     uint const & n
 )
 {
-    if (n == 1) return wordVect;
+    if (n <= 1) return wordVect;
 
     // TODO: Infinite grams (recursive)
     // TODO: Don't n-gram on period
@@ -69,7 +69,7 @@ std::vector<std::string> ngramify(
     uint8_t const & n
 )
 {
-    if (n == 1) return tokenizeByWord(str);
+    if (n <= 1) return tokenizeByWord(str);
 
     std::vector<std::string> ngramVect;
     std::vector<std::string> sentenceCommaVect = strSplit(str, ",.!?");
