@@ -14,6 +14,8 @@
 namespace textalyzer
 {
 
+/* Low level analyzer */
+
 AnlyzerRetType<std::string> lowAnalyze(
     std::string const & inputText, uint8_t const & ngrams)
 {
@@ -35,7 +37,9 @@ AnlyzerRetType<std::string> lowAnalyze(
 }
 
 
-AnlyzerRetType<std::string> fullAnalyze(
+/* Medium level analyzer */
+
+AnlyzerRetType<std::string> medAnalyze(
     std::string const & inputText, uint8_t const & ngrams)
 {
     // 1. Case fold to lower case
@@ -71,6 +75,8 @@ AnlyzerRetType<std::string> fullAnalyze(
 }
 
 
+/* High level analyzer */
+
 AnlyzerRetType<std::vector<std::string>> highAnalyze(
     std::string const & inputText, uint8_t const & dembeddings)
 {
@@ -88,9 +94,9 @@ AnlyzerRetType<std::vector<std::string>> highAnalyze(
     // 4. Remove stop words
     WordFilter::removeWords(tokenVect);
 
-    // TODO: incorporate ngrams
+    // 5. TODO: Construct n-grams
 
-    // 5. Construct word embeddings // TODO: this is temporary solution
+    // 6. Construct word embeddings // TODO: this is temporary solution
     AnlyzerRetType<std::vector<std::string>> outPair;
     outPair.second = numWords;
     for (auto const & token : tokenVect)

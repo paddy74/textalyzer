@@ -19,6 +19,10 @@ using AnlyzerFunType = std::function<AnlyzerRetType<A>(std::string, uint8_t);
 
 /**
  * @brief Create a vector of analyzed tokens using the following methods:
+ *  1. Case fold to lower case
+ *  2. Remove non-alphabetic non-space characters
+ *  3. Tokenize words
+ *  4. Construct n-grams
  *
  * @param inputText
  * @param ngrams
@@ -30,6 +34,10 @@ AnlyzerRetType<std::string> lowAnalyze(
 
 /**
  * @brief Create a vector of analyzed tokens using the following methods:
+ *  1. Case fold to lower case
+ *  2. Remove non-alphabetic non-space characters
+ *  3. Tokenize words
+ *  4. Construct n-grams
  *
  * @param inputText
  * @return AnlyzerRetType<std::string>
@@ -43,6 +51,12 @@ AnlyzerRetType<std::string> lowAnalyze(
 
 /**
  * @brief Create a vector of analyzed tokens using the following methods:
+ *  1. Case fold to lower case
+ *  2. Remove non-alphabetic non-space characters
+ *  3. Tokenize words
+ *  4. Remove stop words
+ *  5. Reduce words to their base form with porter stemming
+ *  6. Construct n-grams
  *
  * @param inputText
  * @param ngrams
@@ -54,6 +68,12 @@ AnlyzerRetType<std::string> medAnalyze(
 
 /**
  * @brief Create a vector of analyzed tokens using the following methods:
+ *  1. Case fold to lower case
+ *  2. Remove non-alphabetic non-space characters
+ *  3. Tokenize words
+ *  4. Remove stop words
+ *  5. Reduce words to their base form with porter stemming
+ *  6. Construct n-grams
  *
  * @param inputText
  * @return AnlyzerRetType<std::string>
@@ -67,6 +87,11 @@ AnlyzerRetType<std::string> medAnalyze(
 
 /**
  * @brief Create a vector of analyzed tokens using the following methods:
+ *  1. Case fold to lower case
+ *  2. Remove non-alphabetic non-space characters
+ *  3. Tokenize words
+ *  4. TODO: Construct n-grams
+ *  5. Construct words embeddings
  *
  * @param inputText
  * @param dembeddings
