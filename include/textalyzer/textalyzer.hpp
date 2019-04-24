@@ -8,19 +8,23 @@
 namespace textalyzer
 {
 
-typedef std::pair<std::vector<std::string>, std::size_t> AnlyzedTextType;
+template<typename T>
+using AnlyzerRetType = std::pair<std::vector<T>, std::size_t>;
 
-typedef std::function<AnlyzedTextType(std::string, uint8_t)> AnlyzerFunType;
+template<typename A>
+using AnlyzerFunType = std::function<AnlyzerRetType<A>(std::string, uint8_t);
 
+
+/* Low level analyzer */
 
 /**
  * @brief Create a vector of analyzed tokens using the following methods:
  *
  * @param inputText
  * @param ngrams
- * @return std::pair<std::vector<std::string>, std::size_t>
+ * @return AnlyzerRetType<std::string>
  */
-std::pair<std::vector<std::string>, std::size_t> simpleAnalyze(
+AnlyzerRetType<std::string> lowAnalyze(
     std::string const & inputText, uint8_t const & ngrams);
 
 
@@ -28,21 +32,23 @@ std::pair<std::vector<std::string>, std::size_t> simpleAnalyze(
  * @brief Create a vector of analyzed tokens using the following methods:
  *
  * @param inputText
- * @return std::pair<std::vector<std::string>, std::size_t>
+ * @return AnlyzerRetType<std::string>
  */
-std::pair<std::vector<std::string>, std::size_t> simpleAnalyze(
+AnlyzerRetType<std::string> lowAnalyze(
     std::string const & inputText
-) { return simpleAnalyze(inputText, 2); };
+) { return lowAnalyze(inputText, 2); };
 
+
+/* Medium level analyzer */
 
 /**
  * @brief Create a vector of analyzed tokens using the following methods:
  *
  * @param inputText
  * @param ngrams
- * @return std::pair<std::vector<std::string>, std::size_t>
+ * @return AnlyzerRetType<std::string>
  */
-std::pair<std::vector<std::string>, std::size_t> static fullAnalyze(
+AnlyzerRetType<std::string> medAnalyze(
     std::string const & inputText, uint8_t const & ngrams);
 
 
@@ -50,10 +56,34 @@ std::pair<std::vector<std::string>, std::size_t> static fullAnalyze(
  * @brief Create a vector of analyzed tokens using the following methods:
  *
  * @param inputText
- * @return std::pair<std::vector<std::string>, std::size_t>
+ * @return AnlyzerRetType<std::string>
  */
-std::pair<std::vector<std::string>, std::size_t> static fullAnalyze(
+AnlyzerRetType<std::string> medAnalyze(
     std::string const & inputText
-) { return fullAnalyze(inputText, 2); }
+) { return medAnalyze(inputText, 2); }
+
+
+/* High level analyzer */
+
+/**
+ * @brief Create a vector of analyzed tokens using the following methods:
+ *
+ * @param inputText
+ * @param dembeddings
+ * @return AnlyzerRetType<std::vector<std::string>>
+ */
+AnlyzerRetType<std::vector<std::string>> highAnalyze(
+    std::string const & inputText, uint8_t const & dembeddings);
+
+
+/**
+ * @brief Create a vector of analyzed tokens using the following methods:
+ *
+ * @param inputText
+ * @return AnlyzerRetType<std::vector<std::string>>
+ */
+AnlyzerRetType<std::vector<std::string>> highAnalyze(
+    std::string const & inputText
+) { return highAnalyze(inputText, 0); };
 
 }
