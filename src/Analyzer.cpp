@@ -100,6 +100,7 @@ AnlyzerRetType<std::vector<std::string>> Analyzer::highAnalyze(
     WordFilter::removeWords(tokenVect);
 
     // 5. TODO: Construct n-grams
+    //tokenVect = ngramify(outText, ngrams);
 
     // 6. Construct word embeddings // TODO: this is temporary solution
     AnlyzerRetType<std::vector<std::string>> outPair;
