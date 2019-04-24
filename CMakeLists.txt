@@ -42,7 +42,7 @@ endif()
 set(libsrc
     src/WordFilter.cpp
     src/WordExpander.cpp
-    src/textalyzer.cpp
+    src/Analyzer.cpp
 )
 
 # Add the library

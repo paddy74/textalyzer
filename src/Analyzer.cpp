@@ -1,4 +1,4 @@
-#include <textalyzer/textalyzer.hpp>
+#include <textalyzer/Analyzer.hpp>
 
 #include <textalyzer/caseFold.hpp>
 #include <textalyzer/editCharacter.hpp>
@@ -13,10 +13,15 @@
 
 namespace textalyzer
 {
+/* Public static member variables */
+
+uint8_t const Analyzer::DEFAULT_NGRAMS = 2;
+uint8_t const Analyzer::DEFAULT_DEMBEDDINGS = 10;
+
 
 /* Low level analyzer */
 
-AnlyzerRetType<std::string> lowAnalyze(
+AnlyzerRetType<std::string> Analyzer::lowAnalyze(
     std::string const & inputText, uint8_t const & ngrams)
 {
     // 1. Case fold to lower case
@@ -39,7 +44,7 @@ AnlyzerRetType<std::string> lowAnalyze(
 
 /* Medium level analyzer */
 
-AnlyzerRetType<std::string> medAnalyze(
+AnlyzerRetType<std::string> Analyzer::medAnalyze(
     std::string const & inputText, uint8_t const & ngrams)
 {
     // 1. Case fold to lower case
@@ -77,7 +82,7 @@ AnlyzerRetType<std::string> medAnalyze(
 
 /* High level analyzer */
 
-AnlyzerRetType<std::vector<std::string>> highAnalyze(
+AnlyzerRetType<std::vector<std::string>> Analyzer::highAnalyze(
     std::string const & inputText, uint8_t const & dembeddings)
 {
     // 1. Case fold to lower case
