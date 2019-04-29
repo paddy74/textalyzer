@@ -2,11 +2,11 @@
 
 # Textalyzer
 
-This is a C++ library to conduct multiple text analysis and preprocessing techniques.
+This is a C++ library for conducting several basic text analysis methods - primarily for preprocessing a given `std::string`.
 
 ## Getting started
 
-Please read (FEATURES.md)[FEATURES.md] for details on how to utilize this library.
+Please read [FEATURES.md](FEATURES.md) for details on how to utilize this library.
 
 ### Adding to your project
 
