@@ -17,9 +17,17 @@ public:
     /* Public member methods */
 
     void static expandWords(
+        std::vector<std::string> & wordVect,
+        std::unordered_map<std::string, std::string> const & contractions
+    );
+    void static expandWords(
         std::vector<std::string> & wordVect, std::string const & language);
     void static expandWords(std::vector<std::string> & wordVect);
 
+    void static expandWord(
+        std::string & word,
+        std::unordered_map<std::string, std::string> const & contractions
+    );
     void static expandWord(std::string & word, std::string const & language);
     void static expandWord(std::string & word);
 
@@ -32,7 +40,7 @@ private:
     WordExpander() {}
 
 
-    /* Private member variables */
+    /* Private static member variables */
 
     std::string static const DEFAULT_LANGUAGE;
 

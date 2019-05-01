@@ -5,6 +5,15 @@ namespace textalyzer
 {
 /* Public member methods */
 
+void WordExpander::expandWords(
+    std::vector<std::string> & wordVect,
+    std::unordered_map<std::string, std::string> const & contractions
+)
+{
+    for (std::string & word : wordVect)
+        WordExpander::expandWord(word, contractions);
+}
+
 /**
  * @brief Expand all word contractions of the given language.
  *
@@ -14,22 +23,8 @@ namespace textalyzer
 void WordExpander::expandWords(
     std::vector<std::string> & wordVect, std::string const & language)
 {
-    // TODO:
-    /*
     auto const & contractions = WordExpander::getContractions(language);
-
-    for (std::string & word : wordVect)
-    {
-        auto const & itr = contractions.find(word);
-        if (itr != contractions.end())
-        {
-            auto const expanVect = strSplit(itr->second);
-            for (auto const & expan : expanVect)
-            {
-                // to slow
-            }
-        }
-    }*/
+    WordExpander::expandWords(wordVect, contractions);
 }
 
 /**
@@ -42,7 +37,24 @@ void WordExpander::expandWords(std::vector<std::string> & wordVect)
 
 
 /**
- * @brief Expand a single word contraction.
+ * @brief Expand a single word using the given contraction map.
+ *
+ * @param word
+ * @param contractions
+ */
+void WordExpander::expandWord(
+    std::string & word,
+    std::unordered_map<std::string, std::string> const & contractions
+)
+{
+    auto const & itr = contractions.find(word);
+    if (itr != contractions.end())
+        word = itr->second;
+    // else nothing
+}
+
+/**
+ * @brief Expand a single word contraction of the given language.
  *
  * @param word
  * @param language
@@ -50,11 +62,7 @@ void WordExpander::expandWords(std::vector<std::string> & wordVect)
 void WordExpander::expandWord(std::string & word, std::string const & language)
 {
     auto const & contractions = WordExpander::getContractions(language);
-
-    auto const & itr = contractions.find(word);
-    if (itr != contractions.end())
-        word = itr->second;
-    // else nothing
+    WordExpander::expandWord(word, contractions);
 }
 
 /**
@@ -63,7 +71,7 @@ void WordExpander::expandWord(std::string & word, std::string const & language)
  * @param word
  */
 void WordExpander::expandWord(std::string & word)
-{ WordExpander::expandWord(word); }
+{ WordExpander::expandWord(word, WordExpander::DEFAULT_LANGUAGE); }
 
 
 /* Getters */
