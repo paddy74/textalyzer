@@ -38,7 +38,7 @@ private:
 
     /* Private class methods */
 
-    bool static const isStopwordOrEmpty(
+    bool static isStopwordOrEmpty(
         std::string const & str,
         std::unordered_set<std::string> const & stopwordSet
     );

@@ -26,7 +26,7 @@ std::vector<std::string> ngramify(
 
     // TODO: Infinite grams (recursive)
     // TODO: Don't n-gram on period
-    std::vector<std::string> ngramVect;
+    std::vector<std::string> outNgramVect;
     for (
         auto tokenItr = wordVect.begin();
         tokenItr < wordVect.end()-1;
@@ -34,26 +34,29 @@ std::vector<std::string> ngramify(
     )
     {
         // 1-gram
-        ngramVect.push_back(*tokenItr);
+        outNgramVect.push_back(*tokenItr);
 
         // 2-gram
         if (n >= 2)
         {
             auto const & next1 = tokenItr + 1;
             if (next1 != wordVect.end())
-                ngramVect.push_back(*tokenItr + ' ' + *next1);
+                outNgramVect.push_back(*tokenItr + ' ' + *next1);
 
             // 3-gram
             if (n >= 3)
             {
                 auto const & next2 = next1 + 1;
                 if (next2 != wordVect.end())
-                    ngramVect.push_back(*tokenItr + ' ' + *next1 + ' ' + *next2);
+                {
+                    outNgramVect.push_back(
+                        *tokenItr + ' ' + *next1 + ' ' + *next2);
+                }
             }
         }
     }
 
-    return ngramVect;
+    return outNgramVect;
 }
 
 
@@ -71,7 +74,7 @@ std::vector<std::string> ngramify(
 {
     if (n <= 1) return tokenizeByWord(str);
 
-    std::vector<std::string> ngramVect;
+    std::vector<std::string> outNgramVect;
     std::vector<std::string> sentenceCommaVect = strSplit(str, ",.!?");
     for (auto & sentence : sentenceCommaVect)
     {
@@ -85,25 +88,27 @@ std::vector<std::string> ngramify(
         )
         {
             // 1-gram
-            ngramVect.push_back(*tokenItr);
+            outNgramVect.push_back(*tokenItr);
 
             // 2-gram
             if (n >= 2)
             {
                 auto const & next1 = tokenItr + 1;
                 if (next1 != wordVect.end())
-                    ngramVect.push_back(*tokenItr + ' ' + *next1);
+                    outNgramVect.push_back(*tokenItr + ' ' + *next1);
 
                 // 3-gram
                 if (n >= 3)
                 {
                     auto const & next2 = next1 + 1;
                     if (next2 != wordVect.end())
-                        ngramVect.push_back(*tokenItr + ' ' + *next1 + ' ' + *next2);
+                        outNgramVect.push_back(*tokenItr + ' ' + *next1 + ' ' + *next2);
                 }
             }
         }
     }
+
+    return outNgramVect;
 }
 
 

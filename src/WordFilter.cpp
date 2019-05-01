@@ -70,7 +70,7 @@ std::unordered_set<std::string> const & WordFilter::getStopwords(
  * @return true If the string is a stopword or is empty.
  * @return false
  */
-bool const isStopwordOrEmpty(
+bool WordFilter::isStopwordOrEmpty(
     std::string const & str,
     std::unordered_set<std::string> const & stopwordSet
 )

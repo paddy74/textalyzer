@@ -106,7 +106,12 @@ AnlyzerRetType<std::vector<std::string>> Analyzer::highAnalyze(
     AnlyzerRetType<std::vector<std::string>> outPair;
     outPair.second = numWords;
     for (auto const & token : tokenVect)
+    {
+        std::vector<std::string> wordRow;
+        for (uint d = 0; d < dembeddings; ++d)
+            wordRow.push_back(token);
         outPair.first.push_back(std::vector<std::string> { token });
+    }
 
     return outPair;
 }
