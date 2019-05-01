@@ -4,7 +4,7 @@
 
 #include <functional>
 
-int main(int argc, const char * argv[])
+int main()
 {
     textalyzer::AnlyzerFunType<std::string> _ =
         textalyzer::Analyzer::lowAnalyze;
