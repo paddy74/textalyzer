@@ -15,7 +15,7 @@ using AnlyzerFunType =
 
 class Analyzer
 {
-   public:
+public:
     /* Public static member variables */
 
     uint8_t static const DEFAULT_NGRAMS;
@@ -74,7 +74,7 @@ class Analyzer
     AnlyzerRetType<std::vector<std::string>> static highAnalyze(
         std::string const & inputText, uint8_t const & dembeddings);
 
-   private:
+private:
     Analyzer() {}
 };
 

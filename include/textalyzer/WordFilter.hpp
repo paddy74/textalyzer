@@ -11,7 +11,7 @@ namespace textalyzer
  */
 class WordFilter
 {
-   public:
+public:
     /* Public member methods */
 
     void static removeWords(
@@ -28,7 +28,7 @@ class WordFilter
     std::unordered_set<std::string> static getStopwordsCopy(
         std::string const & language);
 
-   private:
+private:
     WordFilter() {}
 
     /* Private class methods */

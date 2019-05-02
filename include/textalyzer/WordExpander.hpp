@@ -11,7 +11,7 @@ namespace textalyzer
  */
 class WordExpander
 {
-   public:
+public:
     /* Public member methods */
 
     void static expandWords(
@@ -29,10 +29,10 @@ class WordExpander
 
     /* Public getters */
 
-    std::unordered_map<std::string, std::string> static const & getContractions(
-        std::string const & language);
+    std::unordered_map<std::string, std::string> static const &
+        getContractions(std::string const & language);
 
-   private:
+private:
     WordExpander() {}
 
     /* Private static member variables */

@@ -4,7 +4,8 @@
 int main()
 {
     std::string testStr =
-        "All our submissions from the Microsoft Research Cambridge (MSRC) team "
+        "All our submissions from the Microsoft Research Cambridge (MSRC) "
+        "team "
         "this year continue to explore issues in IR from a perspective very "
         "close to that of the original Okapi team, working first at City "
         "University of London, and then at MSRC. A summary of the "
@@ -14,7 +15,8 @@ int main()
         "for instance, to the successful BM25 weighting function. These "
         "weighting schemes were extended to deal with pseudo relevance "
         "feedback (blind feedback). Furthermore, the Okapi team participated "
-        "in most of the early interactive tracks, and also developed iterative "
+        "in most of the early interactive tracks, and also developed "
+        "iterative "
         "relevance feedback strategies for the routing task. Following up on "
         "the routing work, TRECs 7–11 submissions dealt principally with the "
         "adaptive filtering task; this work is summarised in [5]. Last year "
@@ -22,7 +24,8 @@ int main()
         "clarification forms [6]. We hoped to make use of the query expansion "
         "methods developed for filtering in the context of feedback on "
         "snippets in the clarification forms. However, our methods were not "
-        "very successful. In this year’s TREC we took part in the HARD and WEB "
+        "very successful. In this year’s TREC we took part in the HARD and "
+        "WEB "
         "tracks. In HARD, we tried some variations on the process of feature "
         "selection for query expansion. On the WEB track, we investigated the "
         "combination of information from different content fields and from "
