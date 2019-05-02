@@ -3,11 +3,8 @@
 #include <string>
 #include <vector>
 
-
 namespace textalyzer
 {
-
-
 /**
  * @brief Split a string on a character delimiter.
  *
@@ -25,18 +22,17 @@ std::vector<std::string> strSplit(std::string const & str, char const & delim)
     std::string::size_type pos = str.find_first_of(delim, lastPos);
 
     while ((std::string::npos != pos || std::string::npos != lastPos))
-    {
-        // Found token, add to the token vector
-        tokens.push_back(str.substr(lastPos, pos-lastPos));
-        // Skip delimiters
-        lastPos = str.find_first_not_of(delim, pos);
-        // Find next non-delimiter
-        pos = str.find_first_of(delim, lastPos);
-    }
+        {
+            // Found token, add to the token vector
+            tokens.push_back(str.substr(lastPos, pos - lastPos));
+            // Skip delimiters
+            lastPos = str.find_first_not_of(delim, pos);
+            // Find next non-delimiter
+            pos = str.find_first_of(delim, lastPos);
+        }
 
     return tokens;
 }
-
 
 /**
  * @brief Split a string on a character delimiter.
@@ -56,18 +52,17 @@ std::vector<std::string> strSplit(
     std::string::size_type pos = str.find_first_of(delim, lastPos);
 
     while ((std::string::npos != pos || std::string::npos != lastPos))
-    {
-        // Found token, add to the token vector
-        tokens.push_back(str.substr(lastPos, pos-lastPos));
-        // Skip delimiters
-        lastPos = str.find_first_not_of(delim, pos);
-        // Find next non-delimiter
-        pos = str.find_first_of(delim, lastPos);
-    }
+        {
+            // Found token, add to the token vector
+            tokens.push_back(str.substr(lastPos, pos - lastPos));
+            // Skip delimiters
+            lastPos = str.find_first_not_of(delim, pos);
+            // Find next non-delimiter
+            pos = str.find_first_of(delim, lastPos);
+        }
 
     return tokens;
 }
-
 
 /**
  * @brief Split a string into a vector of words.
@@ -79,7 +74,6 @@ std::vector<std::string> tokenizeByWord(std::string const & str)
 {
     return strSplit(str, ' ');
 }
-
 
 /**
  * @brief Split a string into a vector of sentences.
@@ -93,7 +87,6 @@ std::vector<std::string> tokenizeBySentence(std::string const & str)
     return strSplit(str, fullStopChars);
 }
 
-
 /**
  * @brief Split a string into a vector of paragraphs.
  *
@@ -105,4 +98,4 @@ std::vector<std::string> tokenizeByParagraph(std::string const & str)
     return strSplit(str, '\n');
 }
 
-}
+}  // namespace textalyzer

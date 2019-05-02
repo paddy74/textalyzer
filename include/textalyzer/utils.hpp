@@ -1,12 +1,10 @@
 #pragma once
 
-#include <vector>
 #include <unordered_map>
-
+#include <vector>
 
 namespace textalyzer
 {
-
 /**
  * @brief Creates an `unordered_map` of token frequencies.
  *
@@ -14,21 +12,20 @@ namespace textalyzer
  * @param tokenVector
  * @return std::unordered_map<T, uint>
  */
-template<typename T>
+template <typename T>
 std::unordered_map<T, std::size_t> asFrequencyMap(
-    std::vector<T> const & tokenVector
-)
+    std::vector<T> const & tokenVector)
 {
     std::unordered_map<T, std::size_t> freqMap;
     for (auto const & token : tokenVector)
-    {
-        if (freqMap.count(token) == 0)
-            freqMap[token] = 1;
-        else
-            freqMap.at(token)++;
-    }
+        {
+            if (freqMap.count(token) == 0)
+                freqMap[token] = 1;
+            else
+                freqMap.at(token)++;
+        }
 
     return freqMap;
 }
 
-}
+}  // namespace textalyzer

@@ -1,15 +1,12 @@
-#include <textalyzer/Analyzer.hpp>
-
-#include <textalyzer/caseFold.hpp>
-#include <textalyzer/editCharacter.hpp>
-#include <textalyzer/tokenize.hpp>
-#include <textalyzer/WordFilter.hpp>
-#include <textalyzer/ngramify.hpp>
-
 #include <olestem/stemming/english_stem.h>
 
 #include <codecvt>
-
+#include <textalyzer/Analyzer.hpp>
+#include <textalyzer/WordFilter.hpp>
+#include <textalyzer/caseFold.hpp>
+#include <textalyzer/editCharacter.hpp>
+#include <textalyzer/ngramify.hpp>
+#include <textalyzer/tokenize.hpp>
 
 namespace textalyzer
 {
@@ -17,7 +14,6 @@ namespace textalyzer
 
 uint8_t const Analyzer::DEFAULT_NGRAMS = 2;
 uint8_t const Analyzer::DEFAULT_DEMBEDDINGS = 10;
-
 
 /* Low level analyzer */
 
@@ -40,7 +36,6 @@ AnlyzerRetType<std::string> Analyzer::lowAnalyze(
 
     return std::pair(tokenVect, numWords);
 }
-
 
 /* Medium level analyzer */
 
@@ -66,11 +61,11 @@ AnlyzerRetType<std::string> Analyzer::medAnalyze(
         stemming::english_stem<> EnglishStemmer;
         std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
         for (auto & token : tokenVect)
-        {
-            std::wstring wtoken = converter.from_bytes(token);
-            EnglishStemmer(wtoken);
-            token = converter.to_bytes(wtoken);
-        }
+            {
+                std::wstring wtoken = converter.from_bytes(token);
+                EnglishStemmer(wtoken);
+                token = converter.to_bytes(wtoken);
+            }
     }
 
     // 6. Construct n-grams
@@ -78,7 +73,6 @@ AnlyzerRetType<std::string> Analyzer::medAnalyze(
 
     return std::pair(tokenVect, numWords);
 }
-
 
 /* High level analyzer */
 
@@ -100,20 +94,19 @@ AnlyzerRetType<std::vector<std::string>> Analyzer::highAnalyze(
     WordFilter::removeWords(tokenVect);
 
     // 5. TODO: Construct n-grams
-    //tokenVect = ngramify(outText, ngrams);
+    // tokenVect = ngramify(outText, ngrams);
 
     // 6. Construct word embeddings // TODO: this is temporary solution
     AnlyzerRetType<std::vector<std::string>> outPair;
     outPair.second = numWords;
     for (auto const & token : tokenVect)
-    {
-        std::vector<std::string> wordRow;
-        for (uint d = 0; d < dembeddings; ++d)
-            wordRow.push_back(token);
-        outPair.first.push_back(std::vector<std::string> { token });
-    }
+        {
+            std::vector<std::string> wordRow;
+            for (uint d = 0; d < dembeddings; ++d) wordRow.push_back(token);
+            outPair.first.push_back(std::vector<std::string>{token});
+        }
 
     return outPair;
 }
 
-}
+}  // namespace textalyzer

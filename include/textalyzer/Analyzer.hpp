@@ -1,29 +1,25 @@
 #pragma once
 
+#include <functional>
 #include <string>
 #include <vector>
-#include <functional>
-
 
 namespace textalyzer
 {
-
-template<typename T>
+template <typename T>
 using AnlyzerRetType = std::pair<std::vector<T>, std::size_t>;
 
-template<typename A>
-using AnlyzerFunType = std::function<
-    AnlyzerRetType<A>(std::string const &, uint8_t const &)>;
-
+template <typename A>
+using AnlyzerFunType =
+    std::function<AnlyzerRetType<A>(std::string const &, uint8_t const &)>;
 
 class Analyzer
 {
-public:
+   public:
     /* Public static member variables */
 
     uint8_t static const DEFAULT_NGRAMS;
     uint8_t static const DEFAULT_DEMBEDDINGS;
-
 
     /* Public static class methods */
 
@@ -43,7 +39,6 @@ public:
     AnlyzerRetType<std::string> static lowAnalyze(
         std::string const & inputText, uint8_t const & ngrams);
 
-
     /* Medium level analyzer */
 
     /**
@@ -62,7 +57,6 @@ public:
     AnlyzerRetType<std::string> static medAnalyze(
         std::string const & inputText, uint8_t const & ngrams);
 
-
     /* High level analyzer */
 
     /**
@@ -80,8 +74,8 @@ public:
     AnlyzerRetType<std::vector<std::string>> static highAnalyze(
         std::string const & inputText, uint8_t const & dembeddings);
 
-private:
+   private:
     Analyzer() {}
 };
 
-}
+}  // namespace textalyzer

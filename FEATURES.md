@@ -1,11 +1,10 @@
-
 # Features
 
 The following individual features are made available by this library:
 
 - Case fold
 - *(TODO)* Compound word breaking
-- *(TODO)* Expand word contractions
+- Expand word contractions
 - Remove non-alphabetic characters
 - Remove non-alphanumeric characters
 - Split words at a delimiter

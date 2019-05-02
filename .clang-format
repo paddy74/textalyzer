@@ -1,0 +1,17 @@
+Language:                                   Cpp
+BasedOnStyle:                               Google
+
+AlignAfterOpenBracket:                      AlwaysBreak
+BreakBeforeBraces:                          GNU
+CompactNamespaces:                          true
+DerivePointerAlignment:                     false
+IncludeBlocks:                              Regroup
+IndentWidth:                                4
+IndentWrappedFunctionNames:                 true
+PointerAlignment:                           Middle
+SortIncludes:                               true
+SortUsingDeclarations:                      true
+
+Standard:                                   Auto
+TabWidth:                                   4
+

@@ -1,8 +1,6 @@
-#include <textalyzer/Analyzer.hpp>
-
-#include <iostream>
-
 #include <functional>
+#include <iostream>
+#include <textalyzer/Analyzer.hpp>
 
 int main()
 {
