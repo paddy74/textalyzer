@@ -9,6 +9,7 @@ namespace textalyzer
 {
 /**
  * @brief Construct n-grams for the given ordered token vector.
+ *  // TODO: Recursive n-gram cound.
  *
  * @param wordVect Ordered token vector from which to construct ngrams.
  * @param n Size of max n-gram. All lesser n-grams are also collected.
@@ -18,9 +19,8 @@ std::vector<std::string> ngramify(
     std::vector<std::string> const & wordVect, uint const & n)
 {
     if (n <= 1) return wordVect;
+    if (wordVect.size() == 0) return wordVect;
 
-    // TODO: Infinite grams (recursive)
-    // TODO: Don't n-gram on period
     std::vector<std::string> outNgramVect;
     for (auto tokenItr = wordVect.begin(); tokenItr < wordVect.end() - 1;
          ++tokenItr)
@@ -54,6 +54,7 @@ std::vector<std::string> ngramify(
 
 /**
  * @brief Splits a string into n-ngrams. Considers punctuation, etc.
+ *  // TODO: Recursive n-gram count.
  *
  * @param str
  * @param n
@@ -62,9 +63,12 @@ std::vector<std::string> ngramify(
 std::vector<std::string> ngramify(std::string const & str, uint8_t const & n)
 {
     if (n <= 1) return tokenizeByWord(str);
+    if (str == "") return std::vector<std::string>();
+
+    std::vector<std::string> sentenceCommaVect = strSplit(str, ",.!?");
+    if (sentenceCommaVect.size() <= 1) return sentenceCommaVect;
 
     std::vector<std::string> outNgramVect;
-    std::vector<std::string> sentenceCommaVect = strSplit(str, ",.!?");
     for (auto & sentence : sentenceCommaVect)
         {
             removeNotAlpha(sentence);
