@@ -22,14 +22,14 @@ std::vector<std::string> strSplit(std::string const & str, char const & delim)
     std::string::size_type pos = str.find_first_of(delim, lastPos);
 
     while ((std::string::npos != pos || std::string::npos != lastPos))
-        {
-            // Found token, add to the token vector
-            tokens.push_back(str.substr(lastPos, pos - lastPos));
-            // Skip delimiters
-            lastPos = str.find_first_not_of(delim, pos);
-            // Find next non-delimiter
-            pos = str.find_first_of(delim, lastPos);
-        }
+    {
+        // Found token, add to the token vector
+        tokens.push_back(str.substr(lastPos, pos - lastPos));
+        // Skip delimiters
+        lastPos = str.find_first_not_of(delim, pos);
+        // Find next non-delimiter
+        pos = str.find_first_of(delim, lastPos);
+    }
 
     return tokens;
 }
@@ -52,14 +52,14 @@ std::vector<std::string> strSplit(
     std::string::size_type pos = str.find_first_of(delim, lastPos);
 
     while ((std::string::npos != pos || std::string::npos != lastPos))
-        {
-            // Found token, add to the token vector
-            tokens.push_back(str.substr(lastPos, pos - lastPos));
-            // Skip delimiters
-            lastPos = str.find_first_not_of(delim, pos);
-            // Find next non-delimiter
-            pos = str.find_first_of(delim, lastPos);
-        }
+    {
+        // Found token, add to the token vector
+        tokens.push_back(str.substr(lastPos, pos - lastPos));
+        // Skip delimiters
+        lastPos = str.find_first_not_of(delim, pos);
+        // Find next non-delimiter
+        pos = str.find_first_of(delim, lastPos);
+    }
 
     return tokens;
 }

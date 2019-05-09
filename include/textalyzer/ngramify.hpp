@@ -24,30 +24,29 @@ std::vector<std::string> ngramify(
     std::vector<std::string> outNgramVect;
     for (auto tokenItr = wordVect.begin(); tokenItr < wordVect.end() - 1;
          ++tokenItr)
+    {
+        // 1-gram
+        outNgramVect.push_back(*tokenItr);
+
+        // 2-gram
+        if (n >= 2)
         {
-            // 1-gram
-            outNgramVect.push_back(*tokenItr);
+            auto const & next1 = tokenItr + 1;
+            if (next1 != wordVect.end())
+                outNgramVect.push_back(*tokenItr + ' ' + *next1);
 
-            // 2-gram
-            if (n >= 2)
+            // 3-gram
+            if (n >= 3)
+            {
+                auto const & next2 = next1 + 1;
+                if (next2 != wordVect.end())
                 {
-                    auto const & next1 = tokenItr + 1;
-                    if (next1 != wordVect.end())
-                        outNgramVect.push_back(*tokenItr + ' ' + *next1);
-
-                    // 3-gram
-                    if (n >= 3)
-                        {
-                            auto const & next2 = next1 + 1;
-                            if (next2 != wordVect.end())
-                                {
-                                    outNgramVect.push_back(
-                                        *tokenItr + ' ' + *next1 + ' ' +
-                                        *next2);
-                                }
-                        }
+                    outNgramVect.push_back(
+                        *tokenItr + ' ' + *next1 + ' ' + *next2);
                 }
+            }
         }
+    }
 
     return outNgramVect;
 }
@@ -70,36 +69,34 @@ std::vector<std::string> ngramify(std::string const & str, uint8_t const & n)
 
     std::vector<std::string> outNgramVect;
     for (auto & sentence : sentenceCommaVect)
+    {
+        removeNotAlpha(sentence);
+        std::vector<std::string> wordVect = tokenizeByWord(sentence);
+
+        for (auto tokenItr = wordVect.begin(); tokenItr < wordVect.end() - 1;
+             ++tokenItr)
         {
-            removeNotAlpha(sentence);
-            std::vector<std::string> wordVect = tokenizeByWord(sentence);
+            // 1-gram
+            outNgramVect.push_back(*tokenItr);
 
-            for (auto tokenItr = wordVect.begin();
-                 tokenItr < wordVect.end() - 1; ++tokenItr)
+            // 2-gram
+            if (n >= 2)
+            {
+                auto const & next1 = tokenItr + 1;
+                if (next1 != wordVect.end())
+                    outNgramVect.push_back(*tokenItr + ' ' + *next1);
+
+                // 3-gram
+                if (n >= 3)
                 {
-                    // 1-gram
-                    outNgramVect.push_back(*tokenItr);
-
-                    // 2-gram
-                    if (n >= 2)
-                        {
-                            auto const & next1 = tokenItr + 1;
-                            if (next1 != wordVect.end())
-                                outNgramVect.push_back(
-                                    *tokenItr + ' ' + *next1);
-
-                            // 3-gram
-                            if (n >= 3)
-                                {
-                                    auto const & next2 = next1 + 1;
-                                    if (next2 != wordVect.end())
-                                        outNgramVect.push_back(
-                                            *tokenItr + ' ' + *next1 + ' ' +
-                                            *next2);
-                                }
-                        }
+                    auto const & next2 = next1 + 1;
+                    if (next2 != wordVect.end())
+                        outNgramVect.push_back(
+                            *tokenItr + ' ' + *next1 + ' ' + *next2);
                 }
+            }
         }
+    }
 
     return outNgramVect;
 }

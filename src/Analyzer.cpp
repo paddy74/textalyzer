@@ -61,11 +61,11 @@ AnlyzerRetType<std::string> Analyzer::medAnalyze(
         stemming::english_stem<> EnglishStemmer;
         std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
         for (auto & token : tokenVect)
-            {
-                std::wstring wtoken = converter.from_bytes(token);
-                EnglishStemmer(wtoken);
-                token = converter.to_bytes(wtoken);
-            }
+        {
+            std::wstring wtoken = converter.from_bytes(token);
+            EnglishStemmer(wtoken);
+            token = converter.to_bytes(wtoken);
+        }
     }
 
     // 6. Construct n-grams
@@ -100,11 +100,11 @@ AnlyzerRetType<std::vector<std::string>> Analyzer::highAnalyze(
     AnlyzerRetType<std::vector<std::string>> outPair;
     outPair.second = numWords;
     for (auto const & token : tokenVect)
-        {
-            std::vector<std::string> wordRow;
-            for (uint d = 0; d < dembeddings; ++d) wordRow.push_back(token);
-            outPair.first.push_back(std::vector<std::string>{token});
-        }
+    {
+        std::vector<std::string> wordRow;
+        for (uint d = 0; d < dembeddings; ++d) wordRow.push_back(token);
+        outPair.first.push_back(std::vector<std::string>{token});
+    }
 
     return outPair;
 }

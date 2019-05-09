@@ -3,7 +3,6 @@
 #include <unordered_map>
 #include <vector>
 
-
 namespace textalyzer
 {
 /**
@@ -19,12 +18,12 @@ std::unordered_map<T, std::size_t> asFrequencyMap(
 {
     std::unordered_map<T, std::size_t> freqMap;
     for (auto const & token : tokenVector)
-        {
-            if (freqMap.count(token) == 0)
-                freqMap[token] = 1;
-            else
-                freqMap.at(token)++;
-        }
+    {
+        if (freqMap.count(token) == 0)
+            freqMap[token] = 1;
+        else
+            freqMap.at(token)++;
+    }
 
     return freqMap;
 }

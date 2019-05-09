@@ -91,12 +91,12 @@ std::vector<T> WordFilter::getSymDiff(
     std::vector<T> diffVect;
 
     for (auto const & item : a)
-        {
-            if (b.find(item) != b.end())
-                continue;
-            else
-                diffVect.push_back(item);
-        }
+    {
+        if (b.find(item) != b.end())
+            continue;
+        else
+            diffVect.push_back(item);
+    }
 
     return diffVect;
 }
