@@ -2,13 +2,6 @@ cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
 project(Textalyzer VERSION 0.1 LANGUAGES CXX)
 set(PROJECT_NAME_L textalyzer)
 
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
-set(CMAKE_BINARY_DIR "${CMAKE_SOURCE_DIR}/build")
-
-# Options
-OPTION(BUILD_SHARED_LIBS
-    "Build ${PROJECT_NAME}.a rather than ${PROJECT_NAME}.so" OFF)
-
 # -----------------------------------------------------------------------------
 # Build settings
 # -----------------------------------------------------------------------------
@@ -19,7 +12,16 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+# Options
+# -------
+OPTION(BUILD_SHARED_LIBS
+    "Build ${PROJECT_NAME}.a rather than ${PROJECT_NAME}.so" OFF)
+OPTION(BUILD_TESTING "Build the testing tree." ON)
+
 # Include additional cmake/ settings
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+set(CMAKE_BINARY_DIR "${CMAKE_SOURCE_DIR}/build")
+
 include(BuildType)
 include(BuildLocation)
 include(CompilerFlags)
@@ -159,4 +161,8 @@ message(STATUS "Exporting project - done")
 # -----------------------------------------------------------------------------
 # Testing
 # -----------------------------------------------------------------------------
-add_subdirectory(tests)
+# Only build tests if we are the top-level project
+# Allows this to be used by super projects with `add_subdirectory`
+if(BUILD_TESTING)
+    add_subdirectory(tests)
+endif()

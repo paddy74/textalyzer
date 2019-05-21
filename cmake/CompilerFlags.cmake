@@ -31,31 +31,29 @@
 # -----------------------------------------------------------------------------
 
 # Ensure latest compiler versions
-if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+if($<CXX_COMPILER_ID:"GNU">)
     if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS "7")
         message(FATAL_ERROR "Insufficient gcc version")
     endif()
-elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+elseif($<CXX_COMPILER_ID:"Clang">)
     if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS "3.9")
         message(FATAL_ERROR "Insufficient Clang version")
     endif()
-elseif(CMAKE_CXX_COMPILER_ID MATCHES "AppleClang")
+elseif($<CXX_COMPILER_ID:"AppleClang">)
     if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS "8.1.0")
         message(FATAL_ERROR "Insufficient AppleClang version")
     endif()
-elseif(MSVC)
+elseif($<CXX_COMPILER_ID:"MSVC")
     if(MSVC_VERSION LESS 1920)
         message(FATAL_ERROR "Insufficient MSVC version")
     endif()
-#elseif(Intel)
-
 endif()
 
 # Compiler specific flags
 if(
-    CMAKE_CXX_COMPILER_ID MATCHES "GNU"
-    OR CMAKE_CXX_COMPILER_ID MATCHES "Clang"
-    OR CMAKE_CXX_COMPILER_ID MATCHES "AppleClang"
+    $<CXX_COMPILER_ID:"GNU">
+    OR $<CXX_COMPILER_ID:"Clang">
+    OR $<CXX_COMPILER_ID:"AppleClang">
 )
     include(CheckCXXCompilerFlag)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Wextra")
