@@ -156,5 +156,7 @@ export(PACKAGE ${PROJECT_NAME})
 
 message(STATUS "Exporting project - done")
 
+# -----------------------------------------------------------------------------
 # Testing
+# -----------------------------------------------------------------------------
 add_subdirectory(tests)
