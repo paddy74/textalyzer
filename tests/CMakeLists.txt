@@ -1,3 +1,9 @@
+message(STATUS "Preparing tests")
+
+# Enable construction of test target
+enable_testing()
+
+# Create and link the test executables
 add_executable(textalyzer.test_lowAnalyze src/test_lowAnalyze.cpp)
 target_link_libraries(textalyzer.test_lowAnalyze textalyzer)
 
@@ -10,8 +16,14 @@ target_link_libraries(textalyzer.test_highAnalyze textalyzer)
 add_executable(textalyzer.test_typedefs src/test_typedefs.cpp)
 target_link_libraries(textalyzer.test_typedefs textalyzer)
 
-enable_testing()
-add_test(test_lowAnalyze textalyzer.test_lowAnalyze)
-add_test(test_medAnalyze textalyzer.test_medAnalyze)
-add_test(test_highAnalyze textalyzer.test_highAnalyze)
-add_test(test_typedefs textalyzer.test_typedefs)
+# Test definitions
+macro(create_test target)
+    add_test(NAME ${target} COMMAND $<TARGET_FILE:${target}>)
+endmacro(create_test)
+
+create_test(textalyzer.test_lowAnalyze)
+create_test(textalyzer.test_medAnalyze)
+create_test(textalyzer.test_highAnalyze)
+create_test(textalyzer.test_typedefs)
+
+message(STATUS "Preparing tests - done")
