@@ -17,6 +17,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 OPTION(BUILD_SHARED_LIBS
     "Build ${PROJECT_NAME}.a rather than ${PROJECT_NAME}.so" OFF)
 OPTION(BUILD_TESTING "Build the testing tree." ON)
+OPTION(ENABLE_CODECOV "Enable code coverage reporting." OFF)
 
 # Include additional cmake/ settings
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
