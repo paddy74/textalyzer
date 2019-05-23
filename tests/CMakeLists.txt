@@ -4,23 +4,15 @@ message(STATUS "Preparing tests")
 enable_testing()
 
 # Create and link the test executables
-add_executable(textalyzer.test_lowAnalyze src/test_lowAnalyze.cpp)
-target_link_libraries(textalyzer.test_lowAnalyze textalyzer)
-
-add_executable(textalyzer.test_medAnalyze src/test_medAnalyze.cpp)
-target_link_libraries(textalyzer.test_medAnalyze textalyzer)
-
-add_executable(textalyzer.test_highAnalyze src/test_highAnalyze.cpp)
-target_link_libraries(textalyzer.test_highAnalyze textalyzer)
+add_executable(textalyzer.test_main src/test_main.cpp)
+target_link_libraries(textalyzer.test_main textalyzer)
 
 # Test definitions
 macro(create_test target)
     add_test(NAME ${target} COMMAND $<TARGET_FILE:${target}>)
 endmacro(create_test)
 
-create_test(textalyzer.test_lowAnalyze)
-create_test(textalyzer.test_medAnalyze)
-create_test(textalyzer.test_highAnalyze)
+create_test(textalyzer.test_main)
 
 message(STATUS "Preparing tests - done")
 
@@ -37,20 +29,8 @@ if (ENABLE_CODECOV)
     APPEND_COVERAGE_COMPILER_FLAGS()
 
     SETUP_TARGET_FOR_COVERAGE_LCOV(
-        NAME textalyzer.coverage_lowAnalyze
-        EXECUTABLE $<TARGET_FILE:textalyzer.test_lowAnalyze>
-        DEPENDENCIES textalyzer
-    )
-
-    SETUP_TARGET_FOR_COVERAGE_LCOV(
-        NAME textalyzer.coverage_medAnalyze
-        EXECUTABLE $<TARGET_FILE:textalyzer.test_medAnalyze>
-        DEPENDENCIES textalyzer
-    )
-
-    SETUP_TARGET_FOR_COVERAGE_LCOV(
-        NAME textalyzer.coverage_highAnalyze
-        EXECUTABLE $<TARGET_FILE:textalyzer.test_highAnalyze>
+        NAME textalyzer.coverage_main
+        EXECUTABLE $<TARGET_FILE:textalyzer.test_main>
         DEPENDENCIES textalyzer
     )
 endif()
