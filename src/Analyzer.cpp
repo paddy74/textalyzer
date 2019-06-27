@@ -1,4 +1,4 @@
-#include <olestem/stemming/english_stem.h>
+#include <pstem/stemming/english_stem.h>
 
 #include <codecvt>
 #include <textalyzer/Analyzer.hpp>

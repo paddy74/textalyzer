@@ -1,3 +1,4 @@
-[submodule "libs/OleanderStemmingLibrary"]
-	path = libs/OleanderStemmingLibrary
-	url = https://github.com/paddy74/OleanderStemmingLibrary.git
+[submodule "libs/PStem"]
+	path = libs/PStem
+	url = https://github.com/paddy74/PStem.git
+	branch = master
