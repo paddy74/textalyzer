@@ -99,7 +99,7 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/libs/PStem)
 
 # Link libraries against the project
 target_link_libraries(${PROJECT_NAME_L}
-    PRIVATE
+    PUBLIC
         pstem
 )
 
