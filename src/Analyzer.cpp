@@ -1,6 +1,7 @@
 #include <pstem/stemming/english_stem.h>
 
 #include <codecvt>
+#include <locale>
 #include <textalyzer/Analyzer.hpp>
 #include <textalyzer/WordFilter.hpp>
 #include <textalyzer/caseFold.hpp>

@@ -12,27 +12,7 @@ namespace textalyzer
  * @param delim
  * @return std::vector<std::string>
  */
-std::vector<std::string> strSplit(std::string const & str, char const & delim)
-{
-    std::vector<std::string> tokens;
-
-    // Skip delimiters at the beginning
-    std::string::size_type lastPos = str.find_first_not_of(delim, 0);
-    // Find first non-delimiter
-    std::string::size_type pos = str.find_first_of(delim, lastPos);
-
-    while ((std::string::npos != pos || std::string::npos != lastPos))
-    {
-        // Found token, add to the token vector
-        tokens.push_back(str.substr(lastPos, pos - lastPos));
-        // Skip delimiters
-        lastPos = str.find_first_not_of(delim, pos);
-        // Find next non-delimiter
-        pos = str.find_first_of(delim, lastPos);
-    }
-
-    return tokens;
-}
+std::vector<std::string> strSplit(std::string const & str, char const & delim);
 
 /**
  * @brief Split a string on a character delimiter.
@@ -42,27 +22,7 @@ std::vector<std::string> strSplit(std::string const & str, char const & delim)
  * @return std::vector<std::string>
  */
 std::vector<std::string> strSplit(
-    std::string const & str, std::string const & delim)
-{
-    std::vector<std::string> tokens;
-
-    // Skip delimiters at the beginning
-    std::string::size_type lastPos = str.find_first_not_of(delim, 0);
-    // Find first non-delimiter
-    std::string::size_type pos = str.find_first_of(delim, lastPos);
-
-    while ((std::string::npos != pos || std::string::npos != lastPos))
-    {
-        // Found token, add to the token vector
-        tokens.push_back(str.substr(lastPos, pos - lastPos));
-        // Skip delimiters
-        lastPos = str.find_first_not_of(delim, pos);
-        // Find next non-delimiter
-        pos = str.find_first_of(delim, lastPos);
-    }
-
-    return tokens;
-}
+    std::string const & str, std::string const & delim);
 
 /**
  * @brief Split a string into a vector of words.
@@ -70,10 +30,7 @@ std::vector<std::string> strSplit(
  * @param str
  * @return std::vector<std::string>
  */
-std::vector<std::string> tokenizeByWord(std::string const & str)
-{
-    return strSplit(str, ' ');
-}
+std::vector<std::string> tokenizeByWord(std::string const & str);
 
 /**
  * @brief Split a string into a vector of sentences.
@@ -81,11 +38,7 @@ std::vector<std::string> tokenizeByWord(std::string const & str)
  * @param str
  * @return std::vector<std::string>
  */
-std::vector<std::string> tokenizeBySentence(std::string const & str)
-{
-    std::string static const fullStopChars = ".!?";
-    return strSplit(str, fullStopChars);
-}
+std::vector<std::string> tokenizeBySentence(std::string const & str);
 
 /**
  * @brief Split a string into a vector of paragraphs.
@@ -93,9 +46,6 @@ std::vector<std::string> tokenizeBySentence(std::string const & str)
  * @param str
  * @return std::vector<std::string>
  */
-std::vector<std::string> tokenizeByParagraph(std::string const & str)
-{
-    return strSplit(str, '\n');
-}
+std::vector<std::string> tokenizeByParagraph(std::string const & str);
 
 }  // namespace textalyzer

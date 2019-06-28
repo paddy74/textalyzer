@@ -1,7 +1,5 @@
 #pragma once
 
-#include <regex>
-
 namespace textalyzer
 {
 /**
@@ -14,11 +12,7 @@ namespace textalyzer
  */
 void replaceSubstr(
     std::string & str, std::string const & subString,
-    std::string const & newSubString)
-{
-    std::regex pattern(subString);
-    std::regex_replace(str, pattern, newSubString);
-}
+    std::string const & newSubString);
 
 /**
  * @brief Remove all instances of the given substring inplace.
@@ -27,10 +21,7 @@ void replaceSubstr(
  * @param subString
  * @return std::string
  */
-void removeSubstr(std::string & str, std::string const & subString)
-{
-    replaceSubstr(str, subString, "");
-}
+void removeSubstr(std::string & str, std::string const & subString);
 
 /**
  * @brief Remove all non-alphanumeric non-whitespace characters from a string.
@@ -38,27 +29,14 @@ void removeSubstr(std::string & str, std::string const & subString)
  *
  * @param str
  */
-void removeNotAlnum(std::string & str)
-{
-    auto static isNotAlNumSpace = [](char const & c) {
-        return !(std::isspace(c) || std::isalnum(c));
-    };
-
-    str.erase(
-        std::remove_if(str.begin(), str.end(), isNotAlNumSpace), str.end());
-}
+void removeNotAlnum(std::string & str);
 
 /**
  * @brief Remove all non-alphanumeric non-whitespace characters from a string.
  *
  * @param str
  */
-std::string removeNotAlnumCopy(std::string const & str)
-{
-    std::string outStr = str;
-    removeNotAlnum(outStr);
-    return outStr;
-}
+std::string removeNotAlnumCopy(std::string const & str);
 
 /**
  * @brief Remove all non-alphabetic non-whitespace characters from a string.
@@ -67,15 +45,7 @@ std::string removeNotAlnumCopy(std::string const & str)
  * @param str
  * @return std::string
  */
-void removeNotAlpha(std::string & str)
-{
-    auto static isNotAlphaSpace = [](char const & c) {
-        return !(std::isspace(c) || std::isalpha(c));
-    };
-
-    str.erase(
-        std::remove_if(str.begin(), str.end(), isNotAlphaSpace), str.end());
-}
+void removeNotAlpha(std::string & str);
 
 /**
  * @brief Remove all non-alphabetic non-whitespace characters from a string.
@@ -83,11 +53,6 @@ void removeNotAlpha(std::string & str)
  * @param str
  * @return std::string
  */
-std::string removeNotAlphaCopy(std::string const & str)
-{
-    std::string outStr = str;
-    removeNotAlpha(outStr);
-    return outStr;
-}
+std::string removeNotAlphaCopy(std::string const & str);
 
 }  // namespace textalyzer

@@ -49,9 +49,14 @@ message(STATUS "Setting target properties")
 # Set the library sources
 # -----------------------
 set(libsrc
-    src/WordFilter.cpp
-    src/WordExpander.cpp
     src/Analyzer.cpp
+    src/caseFold.cpp
+    src/editCharacter.cpp
+    src/ngramify.cpp
+    src/tokenize.cpp
+    src/utils.cpp
+    src/WordExpander.cpp
+    src/WordFilter.cpp
 )
 
 # Add the library
@@ -99,7 +104,7 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/libs/PStem)
 
 # Link libraries against the project
 target_link_libraries(${PROJECT_NAME_L}
-    PUBLIC
+    PRIVATE
         pstem
 )
 
