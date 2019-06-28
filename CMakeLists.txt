@@ -54,7 +54,6 @@ set(libsrc
     src/editCharacter.cpp
     src/ngramify.cpp
     src/tokenize.cpp
-    src/utils.cpp
     src/WordExpander.cpp
     src/WordFilter.cpp
 )
